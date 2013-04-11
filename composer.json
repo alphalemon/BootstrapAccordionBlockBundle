@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-0": { "AlphaLemon\\Block\\BootstrapAccordionBlockBundle": ""
+        }
+    },
+    "target-dir" : "AlphaLemon/Block/BootstrapAccordionBlockBundle",
+    "minimum-stability": "dev"
+}

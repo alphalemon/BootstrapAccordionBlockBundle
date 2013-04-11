@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="bootstrapaccordionblock.external_javascripts.cms" type="collection">
+            <parameter>@BootstrapAccordionBlockBundle/Resources/public/js/al_accordion.js</parameter>
+        </parameter>
+
+        <parameter key="bootstrap_accordion_block.block.class">AlphaLemon\Block\BootstrapAccordionBlockBundle\Core\Block\AlBlockManagerBootstrapAccordionBlock</parameter>
+    </parameters>
+
+    <services>
+        <service id="bootstrap_accordion_block.block" class="%bootstrap_accordion_block.block.class%">
+            <tag name="alphalemon_cms.blocks_factory.block" description="Accordion" type="BootstrapAccordionBlock" group="bootstrap,Twitter Bootstrap" />
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
+</container>
