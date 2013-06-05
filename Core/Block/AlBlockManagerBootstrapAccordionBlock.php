@@ -20,7 +20,9 @@ namespace AlphaLemon\Block\BootstrapAccordionBlockBundle\Core\Block;
 use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockCollection;
 
 /**
- * Description of AlBlockManagerBootstrapAccordionBlock
+ * Defines the Block Manager to handle a Bootstrap Accordion
+ *
+ * @author AlphaLemon <webmaster@alphalemon.com>
  */
 class AlBlockManagerBootstrapAccordionBlock extends AlBlockManagerJsonBlockCollection
 {

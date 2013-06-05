@@ -22,7 +22,7 @@ use AlphaLemon\Block\BootstrapAccordionBlockBundle\Core\Block\AlBlockManagerBoot
 
 
 /**
- * AlBlockManagerBootstrapThumbnailsBlockTest
+ * AlBlockManagerBootstrapAccordionBlockTest
  *
  * @author AlphaLemon <webmaster@alphalemon.com>
  */
