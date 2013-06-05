@@ -9,6 +9,12 @@
       "name": "AlphaLemon",
       "email": "info@alphalemon.com"
     }],
+    "repositories": [
+      {
+          "type": "composer",
+          "url": "http://apps.alphalemon.com/"
+      }
+    ],
     "require-dev": {
         "alphalemon/alphalemon-cms-bundle": "dev-master"
     },

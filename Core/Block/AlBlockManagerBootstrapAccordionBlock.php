@@ -1,18 +1,32 @@
 <?php
-/**
- * An AlphaLemonCms Block
+/*
+ * This file is part of the BootstrapAccordionBlockBundle and it is distributed
+ * under the MIT LICENSE. To use this application you must leave intact this copyright 
+ * notice.
+ *
+ * Copyright (c) AlphaLemon <webmaster@alphalemon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For extra documentation and help please visit http://www.alphalemon.com
+ * 
+ * @license    MIT LICENSE
+ * 
  */
-
+ 
 namespace AlphaLemon\Block\BootstrapAccordionBlockBundle\Core\Block;
 
-use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\AlBlockManagerContainer;
-use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockCollection;
 
 /**
  * Description of AlBlockManagerBootstrapAccordionBlock
  */
-class AlBlockManagerBootstrapAccordionBlock extends AlBlockManagerContainer
+class AlBlockManagerBootstrapAccordionBlock extends AlBlockManagerJsonBlockCollection
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getDefaultValue()
     {        
         $value = '
@@ -28,38 +42,16 @@ class AlBlockManagerBootstrapAccordionBlock extends AlBlockManagerContainer
         return array('Content' => $value);
     }
     
+    /**
+     * {@inheritdoc}
+     */
     protected function renderHtml()
     {
-        $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
+        $items = $this->decodeJsonContent($this->alBlock->getContent());
         
         return array('RenderView' => array(
             'view' => 'BootstrapAccordionBlockBundle:Content:accordion.html.twig',
             'options' => array('items' => $items),
         ));
-    }
-    
-    protected function edit(array $values)
-    {
-        if (array_key_exists('Content', $values)) {
-            $data = json_decode($values['Content'], true); 
-            $savedValues = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock);
-
-            if ($data["operation"] == "add") {
-                $savedValues[] = $data["value"];
-                $values = array("Content" => json_encode($savedValues));
-            }
-
-            if ($data["operation"] == "remove") {
-                unset($savedValues[$data["item"]]);
-
-                $blocksRepository = $this->container->get('alpha_lemon_cms.factory_repository');
-                $repository = $blocksRepository->createRepository('Block');
-                $repository->deleteIncludedBlocks($data["slotName"]);
-
-                $values = array("Content" => json_encode($savedValues));
-            }
-        }
-        
-        return parent::edit($values);
     }
 }
