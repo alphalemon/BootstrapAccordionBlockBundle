@@ -16,7 +16,8 @@
       }
     ],
     "require-dev": {
-        "alphalemon/alphalemon-cms-bundle": "dev-master"
+        "alphalemon/alphalemon-cms-bundle": "dev-master",
+        "willdurand/propel-typehintable-behavior": "dev-master"
     },
     "autoload": {
         "psr-0": { "AlphaLemon\\Block\\BootstrapAccordionBlockBundle": ""
